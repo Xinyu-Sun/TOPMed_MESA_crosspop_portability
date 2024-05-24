@@ -18,6 +18,13 @@ gene_list <- fread(args$geneannotation) %>% pull(gene_id) %>% unique()
 
 # Run MASHR for each gene at a time
 for (working_gene in gene_list){
+  ## Different from the original script
+  # Add a if statement to skip genes that have been produced
+  if (file.exists(args$output %&% '/' %&% working_gene %&% '_MASHR_lfsr.txt') & file.exists(args$output %&% '/' %&% working_gene %&% '_MASHR_beta.txt') & file.exists(args$output %&% '/' %&% working_gene %&% '_MASHR_SD.txt')){
+    print('INFO: MASHR results already exist for ' %&% working_gene %&% '. Skipping gene')
+    next
+  }
+
   print('INFO: Running MASHR with gene ' %&% working_gene)
   
   # Load beta and SE dfs as matrices

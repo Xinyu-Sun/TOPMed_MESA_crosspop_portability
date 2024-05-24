@@ -1,3 +1,11 @@
+# Note
+I cloned and modified the original repo from Daniel Araujo's [TOPMed_MESA_crosspop_portability](https://github.com/danielsarj/TOPMed_MESA_crosspop_portability)
+
+## Things that I modified
+1. I added preprocessing script to read MAGENTA data
+2. I choose Lassosum to do variable selection on MASHR outputs, instead of choosing the most significant (lowest lfsr in each ancestry), which is applied in the original repo. 
+3. Modify DIY script step 4
+
 # Optimizing models for use in multi-ethnic TWAS using MASHR
 
 Most of the transcriptome prediction models are built using European-descent individuals' data. As a consequence, they are less accurate when applied to different populations. To improve cross-population transcriptome prediction accuracy, we built a pipeline that leverages cis-eQTLs effect size estimates across distinct populations using [multivariate adaptive shrinkage](https://doi.org/10.1038/s41588-018-0268-8). 
