@@ -177,7 +177,9 @@ for (i in 1:nrow(gene_annotation)) {
     
 }
 
-# save the error log, if any
+# save the error log for each chromosome, if any
 if (nrow(error_log) > 0) {
-    write.table(error_log, file = "lassosum_error_log.txt", sep = "\t", quote = FALSE, row.names = FALSE)
+    # Create directory to save the error log
+    dir.create("lassosum_err_log", showWarnings = FALSE)
+    write.table(error_log, file = paste0("lassosum_err_log/lassosum_error_log_chr", args$chr, ".txt"), sep = "\t", quote = FALSE, row.names = FALSE)
 }

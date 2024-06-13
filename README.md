@@ -1,3 +1,34 @@
+- [Note](#note)
+  - [Things that I modified](#things-that-i-modified)
+  - [Issue with Mashr + Lassosum Model](#issue-with-mashr--lassosum-model)
+- [Optimizing models for use in multi-ethnic TWAS using MASHR](#optimizing-models-for-use-in-multi-ethnic-twas-using-mashr)
+  - [Table of Contents](#table-of-contents)
+  - [Do-it-yourself](#do-it-yourself)
+    - [Pipeline requirements](#pipeline-requirements)
+    - [Step 0. Clone the repo and move into it](#step-0-clone-the-repo-and-move-into-it)
+    - [Step 1. Estimate unadjusted cis-eQTL effect sizes](#step-1-estimate-unadjusted-cis-eqtl-effect-sizes)
+    - [Input files:](#input-files)
+      - [Example command](#example-command)
+    - [Output files:](#output-files)
+    - [Step 2. Prepare MASHR inputs](#step-2-prepare-mashr-inputs)
+    - [Input files:](#input-files-1)
+      - [Example command](#example-command-1)
+    - [Output files:](#output-files-1)
+    - [Step 3. Run MASHR](#step-3-run-mashr)
+    - [Input files:](#input-files-2)
+      - [Example command](#example-command-2)
+    - [Output files:](#output-files-2)
+    - [Step 4. Make model files for MetaXcan](#step-4-make-model-files-for-metaxcan)
+    - [Input files:](#input-files-3)
+      - [Example command](#example-command-3)
+    - [Output files:](#output-files-3)
+    - [Step 5. Make model covariance files for MetaXcan](#step-5-make-model-covariance-files-for-metaxcan)
+    - [Input files:](#input-files-4)
+      - [Example command](#example-command-4)
+    - [Output files:](#output-files-4)
+
+
+
 # Note
 I cloned and modified the original repo from Daniel Araujo's [TOPMed_MESA_crosspop_portability](https://github.com/danielsarj/TOPMed_MESA_crosspop_portability)
 
@@ -5,6 +36,11 @@ I cloned and modified the original repo from Daniel Araujo's [TOPMed_MESA_crossp
 1. I added preprocessing script to read MAGENTA data
 2. I choose Lassosum to do variable selection on MASHR outputs, instead of choosing the most significant (lowest lfsr in each ancestry), which is applied in the original repo. 
 3. Modify DIY script step 4
+
+## Issue with Mashr + Lassosum Model
+- The weights are much denser than the original repo's results. So I have to Adjust the model db files, weight files and summaries files (from step 04) to chromosome based.
+- Covariance files is also created by chromosome, and fed into `SPredixcan.py`.
+- Due to the large covariance file size, I added `--stream_covariance` option. It seems to work so far. 
 
 # Optimizing models for use in multi-ethnic TWAS using MASHR
 

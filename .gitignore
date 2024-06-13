@@ -1,7 +1,9 @@
 my_input/
 *.log
 pipeline_output/
-
-DIY_scripts/step_03_log
-DIY_scripts/step_003.1_lassosum_log
-DIY_scripts/lassosum_error_log.txt
+*.out
+DIY_scripts/step_03_log/
+DIY_scripts/step_003.1_lassosum_log/
+DIY_scripts/lassosum_err_log/
+DIY_scripts/step_05_MASHR_covariances_logs/
+DIY_scripts/Rplots.pdf

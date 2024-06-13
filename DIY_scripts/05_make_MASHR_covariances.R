@@ -86,3 +86,5 @@ for (i in 1:length(list_genes)){
   covariance_df <- do_covariance(working_gene, cis_gt, weighted_snps_info$rsid) %>% unique()
   write.table(covariance_df, file=covariance_file, append=T, quote=F, col.names=F, row.names=F, sep=' ')
 }
+system(paste("gzip -f", covariance_file))
+print('INFO: Gziped covariance file saved')
